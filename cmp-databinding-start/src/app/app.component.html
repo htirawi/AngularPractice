@@ -1,0 +1,34 @@
+<!--<div class="container">-->
+<!--<app-cockpit></app-cockpit>-->
+<!--<hr>-->
+<!--<div class="row">-->
+<!--<div class="col-xs-12">-->
+<!--<app-server-element-->
+<!--*ngFor="let serverElement of serverElements"-->
+<!--[srvElement]="serverElement"-->
+<!--&gt;</app-server-element>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<div class="container">
+  <app-cockpit
+    (serverCreated)="onServerAdded($event)"
+    (blueprintCreated)="onBlueprintAdded($event)"
+  >
+  </app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-server-element *ngFor="let serverElement of serverElements" [srvElement]="serverElement">
+
+        <p #bateekh>
+          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+          <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+        </p>
+
+      </app-server-element>
+    </div>
+  </div>
+</div>
